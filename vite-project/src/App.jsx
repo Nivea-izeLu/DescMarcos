@@ -1,6 +1,7 @@
 import SeletorPerfil from './components/SeletorPerfil';
 import ExibicaoResultado from './components/ExibicaoResultado';
 import BotaoAcao from './components/BotaoAcao';
+import EntradaDados from './components/EntradaDados';
 
 import { useState } from 'react'
 import './App.css'
@@ -8,7 +9,7 @@ import './App.css'
 function App() {
 
     const [valor, setValor] = useState("");   
-    const [tipoCliente, setTipoCliente] = useState("");
+    const [tipo, setTipo] = useState("");
     const [valorFinal, setValorFinal] = useState(null);
     const [mensagem, setMensagem] = useState("");
 
@@ -24,7 +25,7 @@ function App() {
 
         let desconto = 0;
 
-        switch(tipoCliente){
+        switch(tipo){
 
             case "vip":
             desconto = 0.2;
@@ -57,24 +58,12 @@ function App() {
 
         setMensagem("Desconto máximo aplicado");
 
-    }else if(desconto >= 0.15){
+    }else {
 
         setMensagem("Voce recebeu um otimo desconto");
-
-    }else{
-
-        if(desconto === 0.05){
-            setMensagem("Cliente comum - desconto padrao");
-        }else {
-            setMensagem("Tipo de cliente nao elegivel a desconto");
-        }
     }
- 
 
-
-
-
-
+    
 
 
 
@@ -82,13 +71,14 @@ function App() {
 
       <div className="container">
 
-        <SeletorPerfil valor={valor} />
-        <BotaoAcao />
-        <ExibicaoResultado />
+        <SeletorPerfil tipo={tipo} selecionado={setTipo}/>
+        <BotaoAcao aoClicar={calcularDesconto} />
+        <ExibicaoResultado valorFinal={valorFinal} mensagem={mensagem}/>
+        <EntradaDados valor={valor} aoDigitar={setValor} />
 
       </div>
     )
 }
-}
+    }
 
 export default App
