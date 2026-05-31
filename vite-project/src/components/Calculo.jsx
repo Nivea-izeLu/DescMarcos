@@ -57,7 +57,6 @@ export default function Calculo() {
     const valorComDesconto = preco - preco * desconto;
     setValorFinal(valorComDesconto.toFixed(2));
 
-    // Condicinal Aninhada
 
     if(desconto >= 0.3){
 
@@ -65,14 +64,14 @@ export default function Calculo() {
 
     }else {
 
-        setMensagem("Voce recebeu um otimo desconto");
+        setMensagem("Você recebeu um ótimo desconto");
     }   
 
 }
 
  function gerarParcela(){
 
-        const valorResultado = 0
+        const valorResultado = parseFloat(valorFinal || 0)
         const lista = []
 
         for(let i = 1; i <= 6; i++){
@@ -114,7 +113,7 @@ export default function Calculo() {
             <SeletorPerfil tipo={tipo} selecionado={setTipo}/>
             <BotaoAcao aoClicar={calcularDesconto} />
             <ExibicaoResultado valorFinal={valorFinal} mensagem={mensagem}/>
-            <TabelasParcelas onClick={gerarParcela}/>
+            <TabelasParcelas onClick={gerarParcela} parcelas={parcelas}/>
 
         </div>
 

@@ -1,14 +1,10 @@
-export default function ExibicaoResultado (valorFinal, mensagem) {
+export default function ExibicaoResultado({ valorFinal, mensagem }) {
+  if (!mensagem) return null;
 
-    if(!mensagem) return null;
-
-    return(
-
-        <div>
-
-            <p> {mensagem} </p>
-            {valorFinal && <h2> Valor Final: R$ {valorFinal}</h2>}
-            
-        </div>
-    )
+  return (
+    <div>
+      <p>{mensagem}</p>
+      {valorFinal && <h2>Valor Final: R$ {valorFinal}</h2>}
+    </div>
+  );
 }
