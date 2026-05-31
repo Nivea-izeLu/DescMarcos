@@ -1,13 +1,13 @@
 import Calculo from "./components/Calculo";
-import './App.css'
-import './segundo.css'
+import './App.css';
+import './segundo.css';
 
 function App() {
-
+  return (
     <div>
-        <Calculo />
+      <Calculo />
     </div>
-   
-    }
+  );
+}
 
-export default App
+export default App;
